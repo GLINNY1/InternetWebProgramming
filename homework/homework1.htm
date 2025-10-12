@@ -31,7 +31,7 @@
 
     .wrap{
       width: min(92vw, 380px);
-      background: linear-gradient(180deg, var(--panel), #070b16);
+      background: linear-gradient(180deg, var(--panel), #0b1225);
       border-radius: 1.25rem;
       box-shadow: 0 6px 15px rgba(0,0,0,.3);
       padding: 1rem;
@@ -72,12 +72,14 @@
       gap:.25rem;
       min-height: 92px;
     }
+
     .history{
       min-height:1.1em; 
       font-size:.95rem; 
       text-align:right;
       letter-spacing:.4px;
     }
+
     .display{
       width:100%; 
       border:none; 
@@ -112,20 +114,16 @@
       user-select: none;
     }
 
-    button.op { 
-        background: linear-gradient(180deg, #1f2937, #182033); 
+    button.reg_op { 
+        background: linear-gradient(180deg, #bb7915); 
     }
-
+    
     button.clear { 
-        background: linear-gradient(180deg, #b91c1c, #991b1b); 
+        background: linear-gradient(180deg, #4b4d52); 
     }
 
     button.equals { 
         background: linear-gradient(180deg, #16a34a, #15803d); 
-    }
-
-    button.wide { 
-        grid-column: span 2; 
     }
 
     button:active { 
@@ -147,27 +145,28 @@
     </section>
 
     <section class="keys" aria-label="Calculator keys">
+      <button class="clear">⌫</button>
       <button class="clear">C</button>
-      <button class="op">⌫</button>
-      <button class="op">%</button>
-      <button class="op">÷</button>
+      <button class="clear">%</button>
+      <button class="reg_op">÷</button>
 
-      <button>9</button>
-      <button>8</button>
       <button>7</button>
-      <button class="op">×</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="reg_op">×</button>
 
       <button>4</button>
       <button>5</button>
       <button>6</button>
-      <button class="op">−</button>
+      <button class="reg_op">−</button>
 
       <button>1</button>
       <button>2</button>
       <button>3</button>
-      <button class="op">+</button>
+      <button class="reg_op">+</button>
 
-      <button class="wide">0</button>
+      <button>+/-</button>
+      <button>0</button>
       <button>.</button>
       <button class="equals">=</button>
     </section>
