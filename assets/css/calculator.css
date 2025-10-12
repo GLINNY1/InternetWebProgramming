@@ -1,0 +1,131 @@
+    @import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap");
+
+    html, body { 
+        height: 100%; 
+    }
+    
+    /* Global Color Variables */
+    :root{
+      --panel: #0b1220;      
+      --panel-2: #1f2937;    
+      --text: #e5e7eb;       
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: "Funnel Display", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, #1e293b 0%, #0b1220 40%, #070b16 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .wrap{
+      width: min(92vw, 380px);
+      background: linear-gradient(180deg, var(--panel), #0b1225);
+      border-radius: 1.25rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,.3);
+      padding: 1rem;
+    }
+
+    header{
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center;
+      margin-bottom:.5rem;
+    }
+
+    header h1{
+      font-size:1.15rem; 
+      margin:0; 
+      font-weight:600;
+      letter-spacing:.3px;
+    }
+    
+    header a{
+      color: var(--text); 
+      text-decoration:none; 
+      font-size:.95rem;
+      padding:.4rem .7rem; border-radius:.6rem;
+      background: #111827; 
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    header a:hover{ background:#1f2937; }
+
+    .screen{
+      background: linear-gradient(180deg, #0b1220, var(--panel-2));
+      border-radius: 1rem;
+      padding: .9rem 1rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+      display:flex; 
+      flex-direction:column; 
+      gap:.25rem;
+      min-height: 92px;
+    }
+
+    .history{
+      min-height:1.1em; 
+      font-size:.95rem; 
+      text-align:right;
+      letter-spacing:.4px;
+    }
+
+    .display{
+      width:100%; 
+      border:none; 
+      outline:none; 
+      background:transparent;
+      color:var(--text); 
+      font-size:2.15rem; 
+      font-weight:700; 
+      text-align:right;
+      letter-spacing:.6px;
+    }
+
+    .keys{
+      margin-top:1rem;
+      display:grid; 
+      gap:.6rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Calculator Buttons */
+    button{
+      appearance:none; 
+      border:none; 
+      outline:none; 
+      cursor:default; 
+      padding: .95rem .75rem;
+      border-radius: .9rem;
+      font-size:1.15rem; 
+      font-weight:700; 
+      color:var(--text);
+      background: linear-gradient(180deg, #111827, #0f1626);
+      box-shadow: 0 4px 12px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.06);
+      user-select: none;
+    }
+
+    button.reg_op { 
+        background: linear-gradient(180deg, #bb7915); 
+    }
+    
+    button.clear { 
+        background: linear-gradient(180deg, #4b4d52); 
+    }
+
+    button.equals { 
+        background: linear-gradient(180deg, #16a34a, #15803d); 
+    }
+
+    button:active { 
+        transform: translateY(1px); 
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.50);
+    }
