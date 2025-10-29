@@ -7,16 +7,6 @@
   let resultShown = false; 
 
   const updateDisplay = () => { display.value = expression; };
-
-  // Add a small comment entry into the .history area.
-  function addComment(text) {
-    if (!history) return;
-    const el = document.createElement('div');
-    el.className = 'comment';
-    const time = new Date().toLocaleTimeString();
-    el.innerHTML = `<span>${text}</span><time>${time}</time>`;
-    history.appendChild(el);
-  }
   const isOperator = (v) => ['+', '−', '×', '÷', '%'].includes(v);
 
   const toJsExpr = (expr) => expr
@@ -35,9 +25,6 @@
     const btn = e.target.closest('button');
     if (!btn) return;
     const val = btn.textContent.trim();
-
-    // If user clicked the '5' button, add a short comment but still process the digit normally.
-    if (val === '5') addComment('Comment: 5 pressed');
 
     // CLEAR
     if (val === 'C') {
@@ -142,10 +129,5 @@
       updateDisplay();
       return;
     }
-  });
-
-  // Keyboard support: watch for numeric key '5' to add a comment as well
-  window.addEventListener('keydown', (e) => {
-    if (e.key === '5') addComment('Comment: 5 pressed');
   });
 })();
