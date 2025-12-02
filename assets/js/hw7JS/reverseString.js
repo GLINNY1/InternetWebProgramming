@@ -4,13 +4,12 @@ function reverseString() {
 
     if (input === "") {
       resultDiv.textContent = "Please enter a string.";
-      resultDiv.style.color = "#f87171"; // red
-      return;
+      resultDiv.style.color = "#f87171"; 
+
     }
-    // Split the string into words, reverse the array, and join back
     const words = input.trim().split(/\s+/);
     const reversed = words.reverse().join(" ");
     
     resultDiv.textContent = reversed;
-    resultDiv.style.color = "#10b981"; // green
+    resultDiv.style.color = "#10b981"; 
   }

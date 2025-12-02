@@ -4,11 +4,10 @@ function pushCapital() {
 
     if (input === "") {
       resultDiv.textContent = "Please enter a string.";
-      resultDiv.style.color = "#f87171"; // red
+      resultDiv.style.color = "#f87171"; 
       return;
     }
 
-    // Separate capital letters and lowercase letters
     let capitals = "";
     let lowercases = "";
 
@@ -20,10 +19,9 @@ function pushCapital() {
         lowercases += char;
       }
     }
-
-    // Combine: capitals first, then lowercases
+    
     const result = capitals + lowercases;
     
     resultDiv.textContent = result;
-    resultDiv.style.color = "#10b981"; // green
+    resultDiv.style.color = "#10b981"; 
   }
