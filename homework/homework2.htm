@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        HW2
+    </title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">  
+
+</head>
+
+<div class="steps">
+      <h2>Steps I Took to Set Up VS Code Client Debugging</h2>
+
+      <ol>
+        <li>Installed Visual Studio Code from <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>.</li>
+
+        <li>Opened my project folder (which contains my HTML, CSS, and JavaScript files) in VS Code.</li>
+
+        <li>Installed the Live Server extension from the Extensions panel so I could run my HTML files on <code>http://localhost:5500</code>.</li>
+
+        <li>Right-clicked my <code>main.htm</code> file and chose <strong>“Open with Live Server”</strong>. This launched my website at <code>http://127.0.0.1:5500/main.htm</code>.</li>
+
+        <li>Opened the <strong>Run and Debug</strong> panel (the ▶️🐞 icon on the left sidebar in VS Code).</li>
+
+        <li>Clicked <strong>“Run and Debug”</strong>, then selected <strong>“Web App (Chrome)”</strong> as the debugger type.</li>
+
+        <li>VS Code automatically created a <code>launch.json</code> file with the Chrome launch configuration.</li>
+
+        <li>Changed URL section within my launch.json to: <code>http://127.0.0.1:5500/main.htm</code>.</li>
+
+        <li>Opened my JavaScript file (<code>calculator.js</code>) and set a breakpoint by clicking in the left margin next to a line of code (a red dot).</li>
+
+        <li>Pressed the green <strong>Start Debugging</strong> button. VS Code launched Chrome and attached the debugger to my running page.</li>
+
+        <li>Interacted with my webpage in Chrome (clicked buttons, triggered events). When execution reached the breakpoint, VS Code paused the code.</li>
+
+        <li>Used the debugging tools (with the breakpoint) to step through the JavaScript line by line and inspect variable values.</li>
+      </ol>
+    </div>
+
+    <a class="back" href="../main.htm">← Back to Homework List</a>
+  </div>
+
+</body>
+</html>

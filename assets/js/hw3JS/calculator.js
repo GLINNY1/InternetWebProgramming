@@ -1,26 +1,35 @@
 (() => {
+  // Eselect DOM elements
   const display = document.querySelector('.display');
   const history = document.querySelector('.history');
   const keys = document.querySelector('.keys');
 
+  // State variables
   let expression = '';     
   let resultShown = false; 
 
+  // Helper functions
   const updateDisplay = () => { display.value = expression; };
   const isOperator = (v) => ['+', '−', '×', '÷', '%'].includes(v);
 
+  // Convert calculator expression to JavaScript expression
   const toJsExpr = (expr) => expr
     .replace(/×/g, '*')
     .replace(/÷/g, '/')
-    .replace(/−/g, '-'); // keep % as modulus
+    .replace(/−/g, '-'); // ("−" is different from "-") ("−" is the minus sign used in the calculator UI so it has to be converted to "-")
 
   const replaceLastOperator = (opSymbol) => {
+
+    // Prevent replacing if expression is empty
     if (!expression) return;
+
+    // Replace last operator or append new operator
     const last = expression.slice(-1);
     if (isOperator(last)) expression = expression.slice(0, -1) + opSymbol;
     else expression += opSymbol;
   };
 
+  // Event listener for button clicks
   keys.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
