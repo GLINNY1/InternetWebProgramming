@@ -37,7 +37,7 @@
       font-size: 1.1rem;
     }
 
-    input[type="number"], input[type="string"] {
+    input[type="number"], input[type="string"], input[type="text"] {
       padding: 0.6rem;
       border-radius: 0.5rem;
       border: 1px solid rgba(255, 255, 255, 0.25);
@@ -49,7 +49,7 @@
       outline: none;
       transition: 0.2s;
     }
-    input[type="number"], input[type = "string"]:focus {
+    input[type="number"], input[type = "string"], input[type="text"]:focus {
       border-color: #22c55e;
       box-shadow: 0 0 6px #22c55e60;
     }

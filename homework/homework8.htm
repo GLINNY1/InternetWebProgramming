@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        HW8
+    </title>
+    
+    <!-- Loading in the CSS for the style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- Loading in the API Key for the NY Times API (Purpose to keep the API key private from Github) -->
+    <script src="../assets/js/config.js"></script>
+
+    <style>
+
+      /* Container for the search results */
+        .results-container {
+            margin-top: 2rem;
+            text-align: left;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* Container for the individual articles */
+        .article {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Title of the article */
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+        .article-title a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+        .article-title a:hover {
+            color: #16a34a;
+            text-decoration: underline;
+        }
+
+        /* Snippet of the article */
+        .article-snippet {
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Meta information of the article */
+        .article-meta {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* Loading message , error message, and no results message */
+        .loading {
+            color: #38bdf8;
+            font-style: italic;
+        }
+        .error {
+            color: #f87171;
+        }
+        .no-results {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Homework 8 – NY Times Article Search</h1>
+
+    <label for="searchInput">Search Articles:</label>
+    <div>
+      <input type="text" id="searchInput" placeholder="Enter Keywords" />
+      <button onclick="searchNYTimes()">Search</button>
+    </div>
+
+    <div id="result" class="result"></div>
+    <div id="resultsContainer" class="results-container"></div>
+
+    <a class="back" href="../main.htm">← Back to Homework List</a>
+  </div>
+
+  <script src="../assets/js/hw8JS/nyTimesApiScript.js"></script>
+</body>
+</html>
+

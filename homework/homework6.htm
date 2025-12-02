@@ -5,7 +5,7 @@
         HW6
     </title>
     
-    <link rel="stylesheet" href="../assets/css/function.css">  
+    <link rel="stylesheet" href="../assets/css/style.css">  
 
 </head>
 
@@ -25,37 +25,7 @@
     <a class="back" href="../main.htm">← Back to Homework List</a>
   </div>
 
-  <script>
-    function pushCapital() {
-      const input = document.getElementById("stringInput").value;
-      const resultDiv = document.getElementById("result");
+  <script src="../assets/js/hw6JS/pushCapital.js"></script>
 
-      if (input === "") {
-        resultDiv.textContent = "Please enter a string.";
-        resultDiv.style.color = "#f87171"; // red
-        return;
-      }
-
-      // Separate capital letters and lowercase letters
-      let capitals = "";
-      let lowercases = "";
-
-      for (let i = 0; i < input.length; i++) {
-        const char = input[i];
-        if (char >= "A" && char <= "Z") {
-          capitals += char;
-        } else {
-          lowercases += char;
-        }
-      }
-
-      // Combine: capitals first, then lowercases
-      const result = capitals + lowercases;
-      
-      resultDiv.textContent = result;
-      resultDiv.style.color = "#10b981"; // green
-    }
-
-  </script>
 </body>
 </html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        HW4
+    </title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">  
+    <style>
+        select {
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: #1e293b;
+            color: #f9fafb;
+            font-size: 1rem;
+            width: 200px;
+            outline: none;
+            transition: 0.2s;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        select:focus {
+            border-color: #22c55e;
+            box-shadow: 0 0 6px #22c55e60;
+        }
+        select:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .dropdown-group {
+            margin-bottom: 1rem;
+        }
+        .dropdown-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Homework 4 – State → City → County → Village</h1>
+
+    <div class="dropdown-group">
+      <label for="stateSelect">Select State:</label>
+      <select id="stateSelect" onchange="updateCities()">
+        <option value="">-- Select a State --</option>
+      </select>
+    </div>
+
+    <div class="dropdown-group">
+      <label for="citySelect">Select City:</label>
+      <select id="citySelect" onchange="updateCounties()" disabled>
+        <option value="">-- Select a City --</option>
+      </select>
+    </div>
+
+    <div class="dropdown-group">
+      <label for="countySelect">Select County:</label>
+      <select id="countySelect" onchange="updateVillages()" disabled>
+        <option value="">-- Select a County --</option>
+      </select>
+    </div>
+
+    <div class="dropdown-group">
+      <label for="villageSelect">Select Village:</label>
+      <select id="villageSelect" disabled>
+        <option value="">-- Select a Village --</option>
+      </select>
+    </div>
+
+    <div id="result" class="result"></div>
+
+    <a class="back" href="../main.htm">← Back to Homework List</a>
+  </div>
+
+  <script>
+    const locationData = {
+      "California": {
+        "Los Angeles": {
+          "Los Angeles County": ["Beverly Hills", "Santa Monica", "Malibu"],
+          "Orange County": ["Newport Beach", "Irvine", "Huntington Beach"]
+        },
+        "San Francisco": {
+          "San Francisco County": ["Mission District", "Chinatown", "North Beach"]
+        }
+      },
+      "New York": {
+        "New York City": {
+          "Manhattan": ["Greenwich Village", "Upper East Side", "SoHo"],
+          "Brooklyn": ["Williamsburg", "Park Slope", "DUMBO"]
+        },
+        "Buffalo": {
+          "Erie County": ["Amherst", "Tonawanda", "Cheektowaga"]
+        }
+      },
+      "Texas": {
+        "Houston": {
+          "Harris County": ["The Woodlands", "Sugar Land", "Katy"],
+          "Fort Bend County": ["Missouri City", "Rosenberg", "Stafford"]
+        },
+        "Dallas": {
+          "Dallas County": ["Plano", "Irving", "Garland"]
+        }
+      }
+    };
+
+    window.onload = function() {
+      const stateSelect = document.getElementById("stateSelect");
+      const states = Object.keys(locationData);
+      states.forEach(state => {
+        const option = document.createElement("option");
+        option.value = state;
+        option.textContent = state;
+        stateSelect.appendChild(option);
+      });
+    };
+
+    function updateCities() {
+      const stateSelect = document.getElementById("stateSelect");
+      const citySelect = document.getElementById("citySelect");
+      const countySelect = document.getElementById("countySelect");
+      const villageSelect = document.getElementById("villageSelect");
+      const resultDiv = document.getElementById("result");
+
+      const selectedState = stateSelect.value;
+      
+      // Clear and reset city dropdown
+      citySelect.innerHTML = '<option value="">-- Select a City --</option>';
+      citySelect.disabled = !selectedState;
+      
+      // Clear and reset county and village dropdowns
+      countySelect.innerHTML = '<option value="">-- Select a County --</option>';
+      countySelect.disabled = true;
+      villageSelect.innerHTML = '<option value="">-- Select a Village --</option>';
+      villageSelect.disabled = true;
+      
+      resultDiv.textContent = "";
+
+      if (selectedState && locationData[selectedState]) {
+        const cities = Object.keys(locationData[selectedState]);
+        cities.forEach(city => {
+          const option = document.createElement("option");
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+        citySelect.disabled = false;
+      }
+    }
+
+    function updateCounties() {
+      const stateSelect = document.getElementById("stateSelect");
+      const citySelect = document.getElementById("citySelect");
+      const countySelect = document.getElementById("countySelect");
+      const villageSelect = document.getElementById("villageSelect");
+      const resultDiv = document.getElementById("result");
+
+      const selectedState = stateSelect.value;
+      const selectedCity = citySelect.value;
+      
+      // Clear and reset county dropdown
+      countySelect.innerHTML = '<option value="">-- Select a County --</option>';
+      countySelect.disabled = !selectedCity;
+      
+      // Clear and reset village dropdown
+      villageSelect.innerHTML = '<option value="">-- Select a Village --</option>';
+      villageSelect.disabled = true;
+      
+      resultDiv.textContent = "";
+
+      if (selectedState && selectedCity && locationData[selectedState][selectedCity]) {
+        const counties = Object.keys(locationData[selectedState][selectedCity]);
+        counties.forEach(county => {
+          const option = document.createElement("option");
+          option.value = county;
+          option.textContent = county;
+          countySelect.appendChild(option);
+        });
+        countySelect.disabled = false;
+      }
+    }
+
+    function updateVillages() {
+      const stateSelect = document.getElementById("stateSelect");
+      const citySelect = document.getElementById("citySelect");
+      const countySelect = document.getElementById("countySelect");
+      const villageSelect = document.getElementById("villageSelect");
+      const resultDiv = document.getElementById("result");
+
+      const selectedState = stateSelect.value;
+      const selectedCity = citySelect.value;
+      const selectedCounty = countySelect.value;
+      
+      // Clear and reset village dropdown
+      villageSelect.innerHTML = '<option value="">-- Select a Village --</option>';
+      villageSelect.disabled = !selectedCounty;
+      
+      resultDiv.textContent = "";
+
+      if (selectedState && selectedCity && selectedCounty && 
+          locationData[selectedState][selectedCity][selectedCounty]) {
+        const villages = locationData[selectedState][selectedCity][selectedCounty];
+        villages.forEach(village => {
+          const option = document.createElement("option");
+          option.value = village;
+          option.textContent = village;
+          villageSelect.appendChild(option);
+        });
+        villageSelect.disabled = false;
+        
+        villageSelect.onchange = function() {
+          if (villageSelect.value) {
+            resultDiv.textContent = `${villageSelect.value}, ${selectedCounty}, ${selectedCity}, ${selectedState}`;
+            resultDiv.style.color = "#10b981";
+          }
+        };
+      }
+    }
+  </script>
+</body>
+</html>
+
